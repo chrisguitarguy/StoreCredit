@@ -101,7 +101,7 @@ func parseInput(input io.Reader) []Store {
 		panic("Could convert number of cases to an int")
 	}
 
-	stores := make([]Store, numCases, numCases)
+	stores := make([]Store, numCases)
 	for i := 0; i < numCases; i++ {
 		s, err := parseStore(reader)
 		if err != nil {
@@ -130,13 +130,13 @@ func findSolution(store Store) (pos1, pos2 int, err error) {
 		}
 	}
 
-	if (item2 < 0) {
+	if item2 < 0 {
 		err = errors.New("Could not find solution")
 		return
 	}
 
 	pos1, pos2 = store.Items[item1].Position, store.Items[item2].Position
-	if (pos1 > pos2) {
+	if pos1 > pos2 {
 		pos1, pos2 = pos2, pos1
 	}
 
